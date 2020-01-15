@@ -40,13 +40,13 @@ def tree_policy(v):
     :param v: a node
     :return: a node
     """
-
     while not v.board.is_game_over():
-        if len(v.children) == 0:
+        child_visit = [vc.visit_count for vc in v.children]
+        if len(v.children) == 0 or np.sum(child_visit) == 0:
             return expand(v)
         else:
             v = best_child(v, CP)
-    return v
+    return vt
 
 
 def expand(v):
@@ -110,12 +110,15 @@ def backup(v, delta):
         v = v.parent
 
 
+
 def uct_search(board, color=_WHITE, computational_budget = 100):
     v0 = Node(None, board)
+    #vtemp = v0
     while computational_budget > 0:
         vl = tree_policy(v0)
         delta = default_policy(vl.board, color)
         backup(vl, delta)
+        #vtemp = vl
         computational_budget -= 1
     print(v0.children)
     return best_child(v0, 0).incoming_action
