@@ -9,7 +9,8 @@ import sys
 b = Reversi.Board(10)
 
 players = []
-player1 = myPlayer.myPlayer()
+player1 = myPlayerBasic.myPlayer()
+# player1 = myPlayer.myPlayer()
 player1.newGame(b._BLACK)
 players.append(player1)
 player2 = myPlayerUCTSearch.myPlayer()

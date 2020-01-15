@@ -23,7 +23,7 @@ class myPlayer(PlayerInterface):
             print("Referee told me to play but the game is over!")
             return (-1,-1)
 
-        moves = [m for m in self._board.legal_moves()]
+        # moves = [m for m in self._board.legal_moves()]
         #move = moves[randint(0,len(moves)-1)]
         move = uct_search(self._board, self._mycolor)
         self._board.push(move)

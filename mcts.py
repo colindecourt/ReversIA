@@ -23,16 +23,19 @@ class Node:
 
     def choose_untried_action(self):
         """
-        Choose randomly a move among legal moves
+        Choose randomly a move among legal moves, not in childrens
         :return: a new board with the new move
         """
-        legal_moves = self.board.legal_moves()
+        children_moves = [c.incoming_action for c in self.children]## NEW
+        legal_moves = []
+        for l_m in self.board.legal_moves():
+            if l_m not in children_moves:
+                legal_moves.append(l_m)
         random_move = np.random.randint(0, len(legal_moves))
         move = legal_moves[random_move]
         new_board = copy.deepcopy(self.board)
         new_board.push(move)
         return new_board, move
-
 
 def tree_policy(v):
     """
@@ -41,12 +44,11 @@ def tree_policy(v):
     :return: a node
     """
     while not v.board.is_game_over():
-        child_visit = [vc.visit_count for vc in v.children]
-        if len(v.children) == 0 or np.sum(child_visit) == 0:
+        if len(v.children) == 0 or len(v.children)<len(v.board.legal_moves()):## NEW
             return expand(v)
         else:
             v = best_child(v, CP)
-    return vt
+    return v
 
 
 def expand(v):
@@ -58,7 +60,7 @@ def expand(v):
     # False : use the state associated to know node (incoming action variable)
     new_board, action = v.choose_untried_action()
     vp = Node(v, new_board)
-    print('New node', vp)
+    # print('New node', vp)
     # Add new node to v
     vp.incoming_action = action
     v.children.append(vp)
@@ -88,12 +90,13 @@ def default_policy(s, color):
     :return: reward for state s
     """
     # Use all the possible state
-    while not s.is_game_over():
-        legal_moves = s.legal_moves()
+    s_copy = copy.deepcopy(s)
+    while not s_copy.is_game_over():
+        legal_moves = s_copy.legal_moves()
         random_move = np.random.randint(0, len(legal_moves))
         move = legal_moves[random_move]
-        s.push(move)
-    score = s.get_nb_pieces()[0] - s.get_nb_pieces()[1]
+        s_copy.push(move)
+    score = s_copy.get_nb_pieces()[0] - s_copy.get_nb_pieces()[1]
     return score if color == _BLACK else -score
 
 
@@ -109,16 +112,13 @@ def backup(v, delta):
         v.total_sim_reward = v.total_sim_reward + delta
         v = v.parent
 
-
-
 def uct_search(board, color=_WHITE, computational_budget = 100):
     v0 = Node(None, board)
-    #vtemp = v0
     while computational_budget > 0:
         vl = tree_policy(v0)
         delta = default_policy(vl.board, color)
         backup(vl, delta)
         #vtemp = vl
         computational_budget -= 1
-    print(v0.children)
+    # print(v0.children)
     return best_child(v0, 0).incoming_action
