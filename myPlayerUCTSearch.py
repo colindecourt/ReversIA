@@ -5,7 +5,7 @@ import Reversi
 from random import randint
 from playerInterface import *
 import numpy as np 
-from mcts import *
+from UCTSearch import *
 
 class myPlayer(PlayerInterface):
 
@@ -13,9 +13,10 @@ class myPlayer(PlayerInterface):
         self._board = Reversi.Board(10)
         self._mycolor = None
         self._memoire = {}
+        self._my_ai = 'UCT Search algorithm'
 
     def getPlayerName(self):
-        return "Cocotte le guerrier"
+        return "MCTS - UCT Search"
 
 
     def getPlayerMove(self):

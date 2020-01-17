@@ -62,7 +62,7 @@ def estimeFin(board, player, blanc):
 Ici : définir les différentes heuristiques en fonction des moments
 '''
 
-WEIGHT_BOARD = [[20, -3, 11, 8, 6, 6, 8, 11, -3, 20],
+WEIGHT_BOARD_10_10 = [[20, -3, 11, 8, 6, 6, 8, 11, -3, 20],
                 [-3, 7, -4, 1, 1, 1, 1, -4, -7, -3],
                 [-1, 5, -2, 1, 1, 1, 1, -2, 5, -1],
                 [11, -4, 3, 2, 2, 2, 2, 3, -4, 11],
@@ -75,7 +75,7 @@ WEIGHT_BOARD = [[20, -3, 11, 8, 6, 6, 8, 11, -3, 20],
 
 
 def piece_diff_heur(board, player):
-    weights = WEIGHT_BOARD.copy()
+    weights = WEIGHT_BOARD_10_10.copy()
     b = board._board
     d = 0
     my_tiles = 0
@@ -84,7 +84,7 @@ def piece_diff_heur(board, player):
     opp_frontier_tiles = 0
 
     '''
-    X and Y are used to find the indices of the eight neighboring cells of a given cell.
+    X and Y are used to find the indices of the eight neighboring cells of a given cell. Moor neighborhood. 
     '''
     X = [-1, -1, 0, 1, 1, 1, 0, -1]
     Y = [0, 1, 1, 1, 0, -1, -1, -1]
@@ -344,9 +344,10 @@ class myPlayer(PlayerInterface):
         self._board = Reversi.Board(10)
         self._mycolor = None
         self._memoire = {}
+        self._my_ai = 'AlphaBeta with Memory'
 
     def getPlayerName(self):
-        return "Cocotte le guerrier"
+        return "AlphaBeta"
 
 
     def getPlayerMove(self):

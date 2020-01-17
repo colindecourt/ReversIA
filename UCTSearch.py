@@ -96,8 +96,9 @@ def default_policy(s, color):
         random_move = np.random.randint(0, len(legal_moves))
         move = legal_moves[random_move]
         s_copy.push(move)
+    s_copy.pop()
     score = s_copy.get_nb_pieces()[0] - s_copy.get_nb_pieces()[1]
-    return score if color == _BLACK else -score
+    return -score if color == _BLACK else score
 
 
 def backup(v, delta):

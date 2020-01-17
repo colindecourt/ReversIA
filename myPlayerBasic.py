@@ -10,6 +10,7 @@ class myPlayer(PlayerInterface):
     def __init__(self):
         self._board = Reversi.Board(10)
         self._mycolor = None
+        self._my_ai = 'Random moves'
 
     def getPlayerName(self):
         return "Random Player"
