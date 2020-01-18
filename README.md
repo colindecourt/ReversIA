@@ -63,6 +63,15 @@ To run custom game :
 
 `python localGame.py --blackTile nameOfyourAI --whiteTile nameOfyourAI`
 
+Choose an AI among the following list : 
+    * UCTSearch
+    * random
+    * AlphaBeta
+
+Exemple : 
+
+`python localGame.py --blackTile UCTSearch --whiteTile random`
+
 Black tiles always begin but this can be change in `localGame.py` file. 
 
 ## Performances

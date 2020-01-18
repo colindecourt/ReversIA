@@ -1,9 +1,29 @@
 from utils import Reversi
-from players import myPlayerUCTSearch, myPlayerAlphaBeta
+from players import myPlayerUCTSearch, myPlayerAlphaBeta, myPlayerBasic
 import time
 from io import StringIO
 import sys
+import argparse
 
+def get_arguments():
+    parser = argparse.ArgumentParser(description="ReversIA")
+    parser.add_argument("--blackTile", type=str, default='UCTSearch',
+                        help="AI used for the black tiles")
+    parser.add_argument("--whiteTile", type=str, default='AlphaBeta',
+                        help="AI used for the white tiles")
+    return parser.parse_args()
+
+args = get_arguments()
+
+def args_to_object(arg):
+    if arg == 'UCTSearch':
+        return myPlayerUCTSearch
+    elif arg == 'AlphaBeta':
+        return myPlayerAlphaBeta
+    elif arg == 'random':
+        return myPlayerBasic
+    else:
+        print("Invalid AI name")
 
 def run_local_game(ai1, ai2, board_size = 10):
     '''
@@ -88,4 +108,4 @@ def run_local_game(ai1, ai2, board_size = 10):
     return winner, nbwhites, nbblacks, totalTime
 
 if __name__ == '__main__':
-    run_local_game(myPlayerUCTSearch, myPlayerAlphaBeta)
+    run_local_game(args_to_object(args.blackTile), args_to_object(args.whiteTile))
