@@ -1,7 +1,5 @@
-import Reversi
-import myPlayerAlphaBeta
-import myPlayerBasic
-import  myPlayerUCTSearch
+from utils import Reversi
+from players import myPlayerUCTSearch, myPlayerAlphaBeta
 import time
 from io import StringIO
 import sys

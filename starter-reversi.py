@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import time
-import Reversi
-from random import randint, choice
+from utils import Reversi
+from random import choice
 import numpy as np
 
 def RandomMove(b):

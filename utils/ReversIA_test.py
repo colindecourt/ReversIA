@@ -1,6 +1,4 @@
-import myPlayerAlphaBeta
-import myPlayerBasic
-import myPlayerUCTSearch
+from players import myPlayerUCTSearch, myPlayerBasic, myPlayerAlphaBeta
 from localGame import run_local_game
 import seaborn as sb
 import matplotlib.pyplot as plt
@@ -11,7 +9,7 @@ _BLACK = 1 # Black
 _WHITE = 2 # White
 
 
-def random_vs_uct(ai1 = myPlayerBasic, ai2 = myPlayerUCTSearch):
+def random_vs_uct(ai1 =myPlayerBasic, ai2 =myPlayerUCTSearch):
     # contain vector [is_win, num_tiles, time]
     victory_random = []
     victory_uct = []
@@ -20,9 +18,11 @@ def random_vs_uct(ai1 = myPlayerBasic, ai2 = myPlayerUCTSearch):
         if winner == _BLACK:
             victory_random.append([True, nb_black, time[0]])
             victory_uct.append([False, nb_white, time[1]])
-        else:
+        elif winner == _WHITE:
             victory_random.append([False, nb_black, time[0]])
             victory_uct.append([True, nb_white, time[1]])
+        else:
+            print('Deuce')
     plt.figure(1)
     sb.set_style('darkgrid')
     plt.bar([0,1], [np.sum([victory_random[i][0] for i in range(len(victory_random))]),
@@ -47,7 +47,7 @@ def random_vs_uct(ai1 = myPlayerBasic, ai2 = myPlayerUCTSearch):
     plt.show()
 
 
-def random_vs_heuristic(ai1 = myPlayerBasic, ai2 = myPlayerAlphaBeta):
+def random_vs_heuristic(ai1 =myPlayerBasic, ai2 =myPlayerAlphaBeta):
     # contain vector [is_win, num_tiles, time]
     victory_random = []
     victory_alpha_beta = []
@@ -83,7 +83,7 @@ def random_vs_heuristic(ai1 = myPlayerBasic, ai2 = myPlayerAlphaBeta):
     plt.show()
 
 
-def alpha_beta_vs_uct(ai1 = myPlayerAlphaBeta, ai2 = myPlayerUCTSearch):
+def alpha_beta_vs_uct(ai1 =myPlayerAlphaBeta, ai2 =myPlayerUCTSearch):
     # contain vector [is_win, num_tiles, time]
     victory_alpha_beta = []
     victory_uct = []
@@ -121,6 +121,6 @@ def alpha_beta_vs_uct(ai1 = myPlayerAlphaBeta, ai2 = myPlayerUCTSearch):
     plt.show()
 
 if __name__ == '__main__':
-    #random_vs_heuristic()
-    #random_vs_uct()
+    random_vs_heuristic()
+    random_vs_uct()
     alpha_beta_vs_uct()

@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import time
-import Reversi
-from random import randint
-from playerInterface import *
-import numpy as np 
-from UCTSearch import *
+from utils import Reversi
+from players.playerInterface import *
+from utils.UCTSearch import *
 
 class myPlayer(PlayerInterface):
 

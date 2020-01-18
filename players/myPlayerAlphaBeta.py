@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import time
-import Reversi
-from random import randint
-from playerInterface import *
+from utils import Reversi
+from players.playerInterface import *
 import numpy as np 
 
 
