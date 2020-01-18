@@ -75,7 +75,7 @@ Number of victory : Alpha Beta always won versus an Random moves AI.
 
 Total time per party : AlphaBeta (in orange) is very long to play depending on the party (time in seconds). 
 
-![Bite](https://github.com/colindecourt/ReversIA/blob/master/images/time_random_alphaBeta.png)
+![](https://github.com/colindecourt/ReversIA/blob/master/images/time_random_alphaBeta.png)
 
 ### Monte Carlo Tree Search algorithm (UCT Search) vs Random moves
 
