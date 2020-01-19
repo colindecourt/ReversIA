@@ -1,11 +1,11 @@
 ![Supported Python Versions](https://img.shields.io/badge/Python->=3.6-blue.svg?logo=python&logoColor=white)
 
-# ReversIA - An AI for Reversio/Othello game using AlphaBeta algorithm or UCT Search algorithm
+# ReversIA - An AI for Reversi/Othello game using AlphaBeta algorithm or UCT Search algorithm
 
 **Colin Decourt & Mehamli Théo** 
 
 
-> This repository contain an AI for Reversi/Othello game using tree search algorithm such as Alpha Beta or Monte Carlo tree search algorithms. This was done as part of the courses "Research Algorithm" and "Knowledge Representation" given by Laurent Simon at Bordeaux INP - ENSEIRB MATMECA.
+> This repository contain an AI for Reversi/Othello game using tree search algorithm such as Alpha Beta or Monte Carlo Tree Search algorithms. This was done as part of the courses "Research Algorithm" and "Knowledge Representation" given by Laurent Simon at Bordeaux INP - ENSEIRB MATMECA.
 
 ## Description 
 
