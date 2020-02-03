@@ -30,8 +30,8 @@ The **players** folder contains three different AIs to run a local game.
 `myPlayerAlphaBeta.py`contrains beavior functions for playing a party with an *negAlphaBeta with memory* algorithm and a MTDF algorithm. These algorithms are inspired from these links : ![French Othello Federation - Principles and strategies](http://www.ffothello.org/othello/principes-strategiques) / ![Heuristic functions for Reversi/Othello](https://kartikkukreja.wordpress.com/2013/03/30/heuristic-function-for-reversiothello/)
 
 We used five different heuristic to find the optimal moves to win : 
-  1. Pieces differences heuristic : the player try to maximize his number of tiles. 
-  2. Corner closeness heuristic : the player try to avoid the tiles close to the corner. Indeed these tiles are sensitive to a capture if the opponent player in the corner. 
+  1. Pieces differences heuristic : the player tries to maximize his number of tiles. 
+  2. Corner closeness heuristic : the player tries to avoid the tiles close to the corner. Indeed these tiles are sensitive to a capture if the opponent player in the corner. 
   3. Corner occupancy heuristic : the player will try to place tile on the corner to capture tile on diagonals. 
   4. Mobility heuristic
   5. Coin parity heuristic
