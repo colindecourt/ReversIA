@@ -46,7 +46,7 @@ Each heuristics are weigthed to influence the AI to play more some moves. More d
 UCT search algorithm code can be found in the `UCTSearch.py`file in the *utils* folder. This code was inspired from the page 6 to 10 of ![this](https://ieeexplore.ieee.org/document/6145622) paper. In this file the following functions can be find : 
   1. *Node* class : this class is use to create a new node in the tree and contain informations about parent node, children nodes, the number of time the node has been visited, the current state board and the total simulation reward for this node. 
   2. *Tree policy* function : get a tree policy for a given node. While the node is non terminal and the node is expandable, we expand the tree search. Else we return the best child node. 
-  3. *Best child* function : return the best node child based on ![this score function]()
+  3. *Best child* function : return the best node child.
   4. *Default policy* function : return the best reward for a given state.
   5. *Backup* function : perform the backpropagation. 
   6. *uct_search* function : main loop for finding the best move in the tree. We chose to allow a computational budget of 100 for finding the best child.
